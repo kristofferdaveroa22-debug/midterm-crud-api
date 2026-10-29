@@ -2,19 +2,19 @@
 import { Router } from 'express';
 import { UserController } from '../controllers/userController';
 
-export const userRoutes = Router();
+export const userRouter = Router();
 
 // GET /api/users
-userRoutes.get('/', UserController.getAll);
+userRouter.get('/', UserController.getAll);
 
 // GET /api/users/:id
-userRoutes.get('/:id', UserController.getById);
+userRouter.get('/:id', UserController.getById);
 
 // POST /api/users
-userRoutes.post('/', UserController.create);
+userRouter.post('/', UserController.create);
 
 // PUT /api/users/:id
-userRoutes.put('/:id', UserController.update);
+userRouter.put('/:id', UserController.update);
 
 // DELETE /api/users/:id
-userRoutes.delete('/:id', UserController.delete);
+userRouter.delete('/:id', UserController.delete);

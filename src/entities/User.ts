@@ -8,7 +8,7 @@ import {
     OneToMany,
     Index
 } from 'typeorm';
-import { Task } from '../entities/Task';
+import { Task } from './Task';
 
 @Entity('users')
 @Index(['email'], { unique: true })

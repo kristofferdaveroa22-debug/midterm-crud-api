@@ -1,4 +1,4 @@
-
+// src/entities/Task.ts
 import {
     Entity,
     PrimaryGeneratedColumn,
@@ -9,7 +9,6 @@ import {
     JoinColumn,
     Index
 } from 'typeorm';
-
 import { User } from './User';
 
 @Entity('tasks')
@@ -18,36 +17,35 @@ export class Task {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column({ type: 'varchar', length: 200 })
+    @Column({ type: 'varchar', length: 200})
     title!: string;
 
-    @Column({ type: 'text', nullable: true })
+    @Column({ type: 'text', nullable: true})
     description!: string | null;
 
-    @Column({
+    @Column ({
         type: 'enum',
         enum: ['pending', 'in-progress', 'completed'],
         default: 'pending'
     })
     status!: 'pending' | 'in-progress' | 'completed';
 
-    @Column({
+    @Column ({
         type: 'enum',
         enum: ['low', 'medium', 'high'],
         default: 'medium'
     })
     priority!: 'low' | 'medium' | 'high';
 
-    @Column({ type: 'date', nullable: true })
-    dueDate!: string | null;
+    @Column ({ type: 'date', nullable: true})
+    dueDate!: Date | null;
 
-    @ManyToOne(() => User, user => user.tasks, {
-        onDelete: 'CASCADE'
-    })
-    @JoinColumn({ name: 'userId' })
-    user!: User;
+    // Many-to-One Relationship: Many tasks can belong to one user
+    @ManyToOne(() => User, user => user.tasks, { onDelete: 'CASCADE'})
+    @JoinColumn({ name: 'userId'})
+    user!:User;
 
-    @Column({ type: 'int' })
+    @Column({ type: 'int'})
     userId!: number;
 
     @CreateDateColumn()
@@ -55,4 +53,5 @@ export class Task {
 
     @UpdateDateColumn()
     updatedAt!: Date;
+
 }
