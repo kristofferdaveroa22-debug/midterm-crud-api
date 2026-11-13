@@ -3,20 +3,24 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  
   "scripts": {
-    "dev": "ts-node-dev --respawn src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "typeorm": "ts-node ./node_modules/typeorm/cli.js",
-    "migration:generate": "npm run typeorm -- migration:generate -d src/config/data-source.ts",
-    "migration:run": "typeorm-ts-node-commonjs migration:run -d src/config/data-source.ts",
-    "migration:revert": "npm run typeorm -- migration:revert -d src/config/data-source.ts"
+  "dev": "ts-node-dev --respawn src/index.ts",
+  "build": "tsc",
+  "start": "node dist/index.js",
+  "typeorm": "ts-node ./node_modules/typeorm/cli.js",
+  "migration:generate": "npm run typeorm -- migration:generate -d src/config/data-source.ts",
+  "migration:run": "typeorm-ts-node-commonjs migration:run -d src/config/data-source.ts",
+  "migration:revert": "npm run typeorm -- migration:revert -d src/config/data-source.ts",
+  "seed": "ts-node src/seeds/seed.ts"
   },
+
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
     "dotenv": "^18.0.9",
     "express": "^5.3.0",
@@ -25,6 +29,7 @@
     "typeorm": "^1.1.2"
   },
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.5",
